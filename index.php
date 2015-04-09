@@ -39,6 +39,16 @@ if(isset($_GET['id'])){
 		header('Location: index.php?id='.$_GET['id']);
 	}
 }
+else {
+	$result = $mysqli->query("SELECT * from article");
+	while($row = $result->fetch_array(MYSQLI_ASSOC)){
+	echo 	'<article style="border: 1px solid black; max-width:600px; margin:0 auto; padding:20px;">
+				<h3>'.$row['article_title'].'</h3>
+				<p>'.$row['article_content'].'</p>
+				<a href="index.php?id='.$row['article_id'].'">Se mere</a>
+			</article>';
+	}
+}
 ?>
 </body>
 </html>
